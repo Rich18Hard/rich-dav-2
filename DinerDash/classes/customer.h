@@ -1,15 +1,23 @@
-#pragma once
+#ifndef CUSTOMER_H
+#define CUSTOMER_H
 
 class Customer {
 public:
-    Customer(int id) : id(id), emotion(5) {}
-
-    int getId() const { return id; }
-    int getEmotion() const { return emotion; }
-    void setEmotion(int newEmotion) { emotion = newEmotion; }
-    void decreaseEmotion() { if (emotion > 1) --emotion; }
+    Customer(int id);
+    int getId() const;
+    int getEmotion() const;
+    void setEmotion(int newEmotion);
+    void decreaseEmotion();
+    bool isServed() const;
+    void setServed(bool value);
+    bool isEating() const;
+    void setEating(bool value);
 
 private:
     int id;
     int emotion;
+    bool served;
+    bool eating;
 };
+
+#endif

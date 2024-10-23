@@ -1,13 +1,10 @@
-#include <iostream>
-#pragma once
+#ifndef KITCHEN_H
+#define KITCHEN_H
 
 class Kitchen {
 public:
-    void receiveOrder(int tableId) {
-        std::cout << "Kitchen: Received order from table " << tableId << "\n";
-    }
-
-    void notifyOrderReady(int tableId) {
-        std::cout << "Kitchen: Order for table " << tableId << " is ready!\n";
-    }
+    void receiveOrder(int tableId);
+    void notifyOrderReady(int tableId);
 };
+
+#endif

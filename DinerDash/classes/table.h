@@ -1,33 +1,27 @@
-#pragma once
+#ifndef TABLE_H
+#define TABLE_H
 
-#include <iostream>
-#include <vector>
-#include <thread>
-
-#include "orderStatus.h"
-#include "customer.h"
+#include "Customer.h"
+#include "OrderStatus.h"
 
 class Table {
 public:
-    Table(int id) : id(id), orderStatus(OrderStatus::NotYetTaken), customer(id) {}
-
-    int getId() const { return id; }
-    OrderStatus getOrderStatus() const { return orderStatus; }
-    void setOrderStatus(OrderStatus status) { orderStatus = status; }
-    Customer& getCustomer() { return customer; }  // Provide non-const access
-    const Customer& getCustomer() const { return customer; }  // Provide const access
-
-    void displayOrderStatus() const {
-        std::cout << "Table " << id << ": ";
-        switch (orderStatus) {
-            case OrderStatus::NotYetTaken: std::cout << "Order Not Yet Taken\n"; break;
-            case OrderStatus::InKitchen: std::cout << "Order In Kitchen\n"; break;
-            case OrderStatus::Served: std::cout << "Order Served\n"; break;
-        }
-    }
+    Table(int id);
+    int getId() const;
+    OrderStatus getOrderStatus() const;
+    void setOrderStatus(OrderStatus status);
+    bool hasCustomer() const;
+    Customer* getCustomer();
+    const Customer* getCustomer() const;
+    void assignCustomer(Customer* newCustomer);
+    void unseatCustomer();
+    void cleanTable();
+    void displayOrderStatus() const;
 
 private:
     int id;
     OrderStatus orderStatus;
-    Customer customer;
+    Customer* customer;
 };
+
+#endif
